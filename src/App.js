@@ -18,15 +18,15 @@ firebase.initializeApp(config);
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <React-Fragment>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Bloc React Chat Application</h1>
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
           <RoomList firebase={firebase} />
-        </p>
-      </div>
+        </div>
+      </React-Fragment>
     );
   }
 }
