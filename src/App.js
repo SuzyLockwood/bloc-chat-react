@@ -67,6 +67,7 @@ class App extends Component {
             <MessageList
               firebase={firebase}
               setActiveRoom={this.state.activeRoom.key}
+              currentUser={this.state.user}
             />
           ) : null}
         </div>
