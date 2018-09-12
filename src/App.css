@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.chatMessage {
+.appMessage {
   width: 75%;
   margin-inline-start: auto;
   text-align: left;
@@ -15,4 +15,12 @@
 
 .appTitle {
   background-color: rgba(220, 220, 220, 0.884);
+}
+
+/* For User.js - a little styling for separation */
+.userLogin {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: solid 3px black;
 }

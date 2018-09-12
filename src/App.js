@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 // Initialize Firebase
 var config = {
@@ -20,10 +21,15 @@ class App extends Component {
     super(props);
     this.state = { activeRoom: '' };
     this.setActiveRoom = this.setActiveRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   setActiveRoom(room) {
     this.setState({ activeRoom: room });
+  }
+
+  setUser(user) {
+    this.setState({ user: user });
   }
 
   render() {
@@ -31,6 +37,13 @@ class App extends Component {
       <div className="app">
         <h1 className="appTitle">Welcome to the Bloc React Chat Application</h1>
         <div className="sidebar">
+          <div className="appLogin">
+            <User
+              firebase={firebase}
+              setUser={this.setUser}
+              currentUser={this.state.user}
+            />
+          </div>
           <p>Select a Room:</p>
           <RoomList
             firebase={firebase}
@@ -38,7 +51,7 @@ class App extends Component {
             activeRoom={this.state.activeRoom}
           />
         </div>
-        <div className="chatMessage">
+        <div className="appMessage">
           <img
             src="https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             className="RoomList-logo"
