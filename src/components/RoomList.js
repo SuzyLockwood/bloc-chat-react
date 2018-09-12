@@ -31,6 +31,11 @@ class RoomList extends Component {
     this.setState({ newRoomName: e.target.value });
   }
 
+  deleteRoom() {
+    this.roomsRef.child(this.props.activeRoom.key).remove();
+    window.location.reload();
+  }
+
   render() {
     return (
       <div className="chatApp">
@@ -51,6 +56,19 @@ class RoomList extends Component {
             />
             <input type="submit" value="Create New Room" />
           </form>
+          <button
+            type="button"
+            onClick={e => {
+              if (
+                window.confirm(
+                  'Are you sure you wish to delete the current room?'
+                )
+              )
+                this.deleteRoom(e);
+            }}
+          >
+            Delete Current Room
+          </button>
         </div>
       </div>
     );
