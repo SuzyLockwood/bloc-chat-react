@@ -1,28 +1,18 @@
-.App {
+/* For App.js -- Creating sidebar for rooms and a little styling */
+.sidebar {
+  background-color: rgba(220, 220, 220, 0.884);
+  width: 20%;
+  height: 100%;
+  position: fixed;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.chatMessage {
+  width: 75%;
+  margin-inline-start: auto;
+  text-align: left;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.appTitle {
+  background-color: rgba(220, 220, 220, 0.884);
 }

@@ -27,47 +27,31 @@ class RoomList extends Component {
     this.setState({ newRoomName: '' });
   }
 
-  handleRoomChange(e) {
+  handleChange(e) {
     this.setState({ newRoomName: e.target.value });
   }
 
   render() {
     return (
-      <div className="RoomList">
-        <header className="RoomList-header">
-          <img
-            src="https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            className="RoomList-logo"
-            alt="People Holding Chat Bubbles"
-            width={600}
-          />
-          <h1 className="RoomList-title">Bloc Chat Rooms</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>Room ID </th>
-                <th>Room Name </th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.rooms.map(room => (
-                <tr key={room.key}>
-                  <td>{room.key}</td>
-                  <td>{room.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div className="chatApp">
+        <div className="chooseActiveRoom">
+          {this.state.rooms.map(room => (
+            <p key={room.key} onClick={() => this.props.setActiveRoom(room)}>
+              {room.name}
+            </p>
+          ))}
+        </div>
+        <div className="createRoomForm">
           <form onSubmit={e => this.createRoom(e)}>
             <input
               type="text"
-              id="newRoomName"
-              onChange={e => this.handleRoomChange(e)}
-              value={this.state.newRoom}
+              placeholder="...or enter a Room Name"
+              value={this.state.newRoomName}
+              onChange={e => this.handleChange(e)}
             />
-            <button type="submit">Create New Room</button>
+            <input type="submit" value="Create New Room" />
           </form>
-        </header>
+        </div>
       </div>
     );
   }

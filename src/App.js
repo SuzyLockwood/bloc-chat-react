@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
 
 // Initialize Firebase
 var config = {
@@ -16,17 +16,48 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { activeRoom: '' };
+    this.setActiveRoom = this.setActiveRoom.bind(this);
+  }
+
+  setActiveRoom(room) {
+    this.setState({ activeRoom: room });
+  }
+
   render() {
     return (
-      <React-Fragment>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Bloc React Chat Application</h1>
-        </header>
-        <div className="App-intro">
-          <RoomList firebase={firebase} />
+      <div className="app">
+        <h1 className="appTitle">Welcome to the Bloc React Chat Application</h1>
+        <div className="sidebar">
+          <p>Select a Room:</p>
+          <RoomList
+            firebase={firebase}
+            setActiveRoom={this.setActiveRoom}
+            activeRoom={this.state.activeRoom}
+          />
         </div>
-      </React-Fragment>
+        <div className="chatMessage">
+          <img
+            src="https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            className="RoomList-logo"
+            alt="People Holding Chat Bubbles"
+            width={600}
+          />
+          <h2> You are in Chat Room: {this.state.activeRoom.name} </h2>
+          {/*
+            Conditional that defaults to null if no Active Room is present.
+            If room selected from RoomList, then retrieve MessageList.
+            */}
+          {this.state.activeRoom ? (
+            <MessageList
+              firebase={firebase}
+              setActiveRoom={this.state.activeRoom.key}
+            />
+          ) : null}
+        </div>
+      </div>
     );
   }
 }
