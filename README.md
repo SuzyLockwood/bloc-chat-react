@@ -26,5 +26,3 @@ Simple React chat application with old style graphics and a retro feel.
 * Main Page with Room List
 ![react_chat-main-page](https://user-images.githubusercontent.com/40550878/49188027-2d565080-f31e-11e8-92c4-209c08682939.PNG)
 
-* Authentication
-![react_chat-authentication](https://user-images.githubusercontent.com/40550878/49188049-4101b700-f31e-11e8-876d-8f353372aa04.PNG)
